@@ -13,20 +13,23 @@ class ExampleUser extends \ItForFree\SimpleMVC\User
     protected function checkAuthData($login, $pass) 
     {
         $result = false;
+        //$result = true;
         
-        $sql = "SELECT pass FROM users WHERE login = :login";
+        $sql = "SELECT pass, activity FROM users WHERE login = :login";
         $st = $this->pdo->prepare($sql);
         $st->bindValue( ":login", $login, \PDO::PARAM_STR);
-        $st->execute();
+        $st->execute(); 
         $siteAuthData = $st->fetch();
-   
+        $userActivity = $siteAuthData['activity'];
+        
         $passForCheck = password_verify($pass, $siteAuthData['pass']);
 
-        
         if (isset($siteAuthData['pass'])) {
-            if ($passForCheck) {
+            
+            if ($passForCheck == true && $userActivity == 1 )  
+            {
                 $result = true;
-           }
+            }
         }
         return $result;
         
@@ -69,5 +72,5 @@ class ExampleUser extends \ItForFree\SimpleMVC\User
             return $siteAuthData['role'];
         }
     }
-    
+       
 }

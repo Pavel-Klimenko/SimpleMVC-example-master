@@ -6,7 +6,7 @@ $Url = Config::getObject('core.url.class');
 
 <?php include('includes/admin-users-nav.php'); ?>
 
-<h2><?= $deleteAdminusersTitle ?></h2>
+<h2><?= $deleteAdminusers ?></h2>
 
 <form method="post" action="<?= $Url::link("admin/adminusers/delete&id=". $_GET['id'])?>" >
     Вы уверены, что хотите удалить данные пользователя?

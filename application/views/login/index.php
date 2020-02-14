@@ -3,11 +3,12 @@
 <form method="post" action="<?= \ItForFree\SimpleMVC\Url::link('login/login')?>">
     
     <?php 
-    if (!empty($_GET['auth'])) {
-        echo "Неверное имя пользователя или пароль";
+    if (!empty($_GET['auth'])) { 
+        echo "Неверное имя пользователя, пароль или пользователь неактивный";
     }
     ?>
     <div class="form-group">
+        <br>
         <label for="userName" >Введите имя пользователя</label>
         <input type="text"  class="form-control" id="userName"  name="userName" >
     </div>

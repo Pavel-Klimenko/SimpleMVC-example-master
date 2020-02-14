@@ -1,6 +1,6 @@
 <?php
 namespace application\controllers\admin;
-use \application\models\Adminusers as Adminusers;
+use application\models\Adminusers;
 use ItForFree\SimpleMVC\Config;
 
 /**
@@ -26,16 +26,16 @@ class AdminusersController extends \ItForFree\SimpleMVC\mvc\Controller
             $viewAdminusers = $Adminusers->getById($_GET['id']);
             $this->view->addVar('viewAdminusers', $viewAdminusers);
             $this->view->render('user/view-item.php');
-        } else { // выводим полный список
-            
-            $users = $Adminusers->getList()['results'];
+        } else { // выводим полный список   
+                $users = $Adminusers->getList()['results'];
             $this->view->addVar('users', $users);
             $this->view->render('user/index.php');
         }
     }
 
     /**
-     * Выводит на экран форму для создания новой статьи (только для Администратора)
+     * Выводит на экран форму для создания нового пользователя
+     *  (только для Администратора)
      */
     public function addAction()
     {
@@ -87,7 +87,6 @@ class AdminusersController extends \ItForFree\SimpleMVC\mvc\Controller
             
             $this->view->addVar('viewAdminusers', $viewAdminusers);
             $this->view->addVar('editAdminusersTitle', $editAdminusersTitle);
-            
             $this->view->render('user/edit.php');   
         }
         
@@ -107,7 +106,8 @@ class AdminusersController extends \ItForFree\SimpleMVC\mvc\Controller
                 $newAdminusers = $Adminusers->loadFromArray($_POST);
                 $newAdminusers->delete();
                 
-                $this->redirect($Url::link("archive/allUsers"));
+                $this->redirect($Url::link("admin/adminusers/index"));
+                //$this->redirect($Url::link("archive/allUsers"));
               
             }
             elseif (!empty($_POST['cancel'])) {
@@ -118,11 +118,10 @@ class AdminusersController extends \ItForFree\SimpleMVC\mvc\Controller
             
             $Adminusers = new Adminusers();
             $deletedAdminusers = $Adminusers->getById($id);
-            $deleteAdminusersTitle = "Удаление статьи";
+            $deleteAdminusers = "Удаление пользователя";
             
-            $this->view->addVar('deleteAdminusersTitle', $deleteAdminusersTitle);
+            $this->view->addVar('deleteAdminusers', $deleteAdminusers);
             $this->view->addVar('deletedAdminusers', $deletedAdminusers);
-            
             $this->view->render('user/delete.php');
         }
     }
