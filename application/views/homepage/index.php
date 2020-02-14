@@ -1,4 +1,4 @@
-<div class="row">
+    <div class="row">
     <div class="col "><h1><?php echo $homepageTitle ?></h1>
         </div>
 </div>

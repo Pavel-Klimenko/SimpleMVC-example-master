@@ -5,7 +5,7 @@
 
     <div class="form-group">
         <label for="login">Введите имя пользователя</label>
-        <input type="text" class="form-control" name="login" id="login" placeholder="имя пользователя">
+        <input type="text" class="form-control" name="login" required id="login" placeholder="имя пользователя">
     </div>
     <div class="form-group">
         <label for="pass">Введите пароль</label>
@@ -18,9 +18,12 @@
             <option value="auth_user">Зарегистрированный пользователь</option>
         </select>
     </div>
+    <div class="form-group">   
+        <input type="checkbox" name="activity" value="1" checked>Активный пользователь<Br>
+    </div>
     <div class="form-group">
         <label for="email">Введите e-mail</label>
-        <input type="text" class="form-control"  name="email" id="email" placeholder="адрес электропочты">
+        <input type="email" class="form-control"  name="email" required id="email" placeholder="адрес электропочты">
     </div>
     <input type="submit" class="btn btn-primary" name="saveNewUser" value="Сохранить">
     <input type="submit" class="btn" name="cancel" value="Назад">

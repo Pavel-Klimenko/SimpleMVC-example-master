@@ -4,15 +4,13 @@ use ItForFree\SimpleMVC\Url;
 
 $User = Config::getObject('core.user.class');
 
-
 //vpre($User->explainAccess("admin/adminusers/index"));
 ?>
 
 <ul class="nav">
-    
     <?php  if ($User->isAllowed("admin/adminusers/index")): ?>
     <li class="nav-item ">
-        <a class="nav-link" href="<?= Url::link("admin/adminusers/index") ?>">Список</a>
+        <a class="nav-link" href="<?= Url::link("admin/adminusers/index") ?>">Список пользователей</a>
     </li>
     <?php endif; ?>
     

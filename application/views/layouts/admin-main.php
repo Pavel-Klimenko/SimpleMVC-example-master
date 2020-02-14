@@ -12,7 +12,7 @@ $User = Config::getObject('core.user.class');
         <?php include('includes/admin-main/nav.php'); ?>
         <div class="container">
             <?= $CONTENT_DATA ?>
-        </div>
+            </div>
         <?php include('includes/main/footer.php'); ?>
     </body>
 </html>

@@ -34,11 +34,6 @@ class Adminusers extends BaseExampleModel
     /**
      * @var type 
      */
-    public $email = null;
-    
-    /**
-     * @var type 
-     */
     public $id = null;
     
     /**
@@ -51,7 +46,15 @@ class Adminusers extends BaseExampleModel
      */
     public $role = null;
     
-
+    /**
+     * @var type 
+     */
+    public $activity = null;
+    
+        /**
+     * @var type 
+     */
+    public $email = null;
     
     /**
      * Добавляем нового пользователя
@@ -59,8 +62,8 @@ class Adminusers extends BaseExampleModel
     public function insert()
     {
         $sql = "INSERT INTO $this->tableName (timestamp, login, pass,"
-                . " role, email) VALUES (:timestamp, :login, :pass,"
-                . " :role, :email)"; 
+                . " role, activity, email) VALUES (:timestamp, :login, :pass,"
+                . " :role, :activity, :email)"; 
         $st = $this->pdo->prepare ( $sql );
         $st->bindValue( ":timestamp", (new \DateTime('NOW'))->format('Y-m-d H:i:s'), \PDO::PARAM_STMT);
         $st->bindValue( ":login", $this->login, \PDO::PARAM_STR );
@@ -71,6 +74,7 @@ class Adminusers extends BaseExampleModel
 //        \DebugPrinter::debug($hashPass);
         $st->bindValue( ":pass", $hashPass, \PDO::PARAM_STR ); 
         $st->bindValue( ":role", $this->role, \PDO::PARAM_STR );
+        $st->bindValue( ":activity", $this->activity, \PDO::PARAM_INT );
         $st->bindValue( ":email", $this->email, \PDO::PARAM_STR );
         $st->execute();
         $this->id = $this->pdo->lastInsertId();
@@ -79,10 +83,11 @@ class Adminusers extends BaseExampleModel
     /**
     * Обновляем текущий объект статьи в базе данных
     */
+    
     public function update()
     {
         $sql = "UPDATE $this->tableName SET timestamp=:timestamp, login=:login,"
-                . " pass=:pass, role=:role, "
+                . " pass=:pass, role=:role, activity=:activity,"
                 . " email=:email, id=:id  WHERE id = :id";  
         $st = $this->pdo->prepare ( $sql );
         $st->bindValue( ":timestamp", (new \DateTime('NOW'))->format('Y-m-d H:i:s'), \PDO::PARAM_STMT);
@@ -94,6 +99,7 @@ class Adminusers extends BaseExampleModel
         
         $st->bindValue( ":pass", $hashPass, \PDO::PARAM_STR );
         $st->bindValue( ":role", $this->role, \PDO::PARAM_STR );
+        $st->bindValue( ":activity", $this->activity, \PDO::PARAM_INT );
         $st->bindValue( ":email", $this->email, \PDO::PARAM_STR );
         $st->bindValue( ":id", $this->id, \PDO::PARAM_INT );
         $st->execute();
