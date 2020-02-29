@@ -3,12 +3,12 @@
     
 <form id="addSubcategory" method="post" action="<?= \ItForFree\SimpleMVC\Url::link("admin/subcategory/add")?>"> 
     <div class="form-group">
-        <label for="title">Название подкатегории</label>
+        <label for="title">Название</label>
         <input type="text" class="form-control" name="title" required id="title" placeholder="">
     </div>
     <div class="form-group">
-        <label for="description">Краткое описание подкатегории</label>
-        <input type="text" class="form-control" name="description" required id="description" placeholder="">
+        <label for="description">Краткое описание</label>
+        <input type="text" class="form-control" name="description" maxlength="150" required id="description" placeholder="description">
     </div> 
     <div class="form-group">
         <label for="category_id">Категория</label><br />

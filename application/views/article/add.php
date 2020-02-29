@@ -3,12 +3,12 @@
 
 <form id="addArticle" method="post" action="<?= \ItForFree\SimpleMVC\Url::link("admin/article/add")?>"> 
     <div class="form-group">
-        <label for="title">Название статьи</label>
-        <input type="text" class="form-control" name="title" required id="title" placeholder="">
+        <label for="title">Название</label>
+        <input type="text" class="form-control" name="title" required id="title" placeholder="title">
     </div>  
     <div class="form-group">
-        <label for="summary">Краткое содержание статьи</label>
-        <p><textarea class="form-control" name="summary" id="summary" placeholder="" rows="3" cols="45"></textarea></p>
+        <label for="summary">Краткое содержание</label>
+        <p><textarea class="form-control" name="summary" id="summary" placeholder="summary" rows="2" maxlength="200"></textarea></p>
     </div>
     
     <div class="form-group">
@@ -34,7 +34,7 @@
     </div>
     
     <div class="form-group">
-        <label for="author_login">Автор статьи</label><br />
+        <label for="author_login">Автор</label><br />
         <select name="author_login">
         <?php foreach ($authors as $author) { ?>
         <option value="<?php echo $author->login?>">
@@ -45,11 +45,11 @@
     </div>
        
     <div class="form-group">
-        <label for="content">Основной текст статьи</label>
-        <p><textarea class="form-control" name="content" id="content" placeholder="" rows="10" cols="45"></textarea></p>
+        <label for="content">Основной текст</label>
+        <p><textarea class="form-control" name="content" id="content" placeholder="content" rows="10"  maxlength="3000"></textarea></p>
     </div>  
     <div class="form-group">   
-        <input type="checkbox" name="activity" value="1" checked>Активная статья<Br>
+        <input type="checkbox" name="activity" value="1" checked>Активная<Br>
     </div>
     <input type="submit" class="btn btn-primary" name="saveNewArticle" value="Сохранить">
     <input type="submit" class="btn" name="cancel" value="Назад">

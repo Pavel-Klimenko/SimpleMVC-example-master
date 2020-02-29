@@ -16,12 +16,12 @@ $User = Config::getObject('core.user.class');
     
 <form id="editSubcategory" method="post" action="<?= \ItForFree\SimpleMVC\Url::link("admin/subcategory/edit") ?>"> 
     <div class="form-group">
-        <label for="title">Название подкатегории</label>
-        <input type="text" class="form-control" name="title" required id="title" placeholder="Название подкатегории" value="<?= $viewSubcategory->title ?>">
+        <label for="title">Название</label>
+        <input type="text" class="form-control" name="title" required id="title" placeholder="title" value="<?= $viewSubcategory->title ?>">
     </div>
     <div class="form-group">
-        <label for="description">Описание подкатегории</label>
-        <input type="text" class="form-control"  name="description" id="summary" placeholder="Описание подкатегории" value="<?= $viewSubcategory->description ?>">
+        <label for="description">Краткое описание</label>
+        <input type="text" class="form-control"  name="description" id="summary" placeholder="description" value="<?= $viewSubcategory->description ?>">
     </div>
 
     <div class="form-group">
