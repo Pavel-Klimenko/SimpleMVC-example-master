@@ -14,7 +14,7 @@ $User = Config::getObject('core.user.class');
     </span>
 </h2>
     
-<form id="editSubcategory" method="post" action="<?= \ItForFree\SimpleMVC\Url::link("admin/subcategory/edit") ?>"> 
+<form id="editSubcategory" method="post" action="<?= $Url::link("admin/subcategory/edit&id=" . $_GET['id'])?>">
     <div class="form-group">
         <label for="title">Название</label>
         <input type="text" class="form-control" name="title" required id="title" placeholder="title" value="<?= $viewSubcategory->title ?>">
@@ -35,6 +35,7 @@ $User = Config::getObject('core.user.class');
             <?php } ?>
         </select>
     </div>
-    <input type="submit" class="btn btn-primary" name="saveNewSubcategory" value="Сохранить">
+    <input type="hidden" name="id" placeholder="id" value="<?= $_GET['id']; ?>">
+    <input type="submit" class="btn btn-primary" name="saveChanges" value="Сохранить">
     <input type="submit" class="btn" name="cancel" value="Назад">
 </form>

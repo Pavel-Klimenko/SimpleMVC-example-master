@@ -65,11 +65,11 @@ class SubcategoryController extends \ItForFree\SimpleMVC\mvc\Controller
                 $subcategory = new Subcategory ();
                 $newSubcategory = $subcategory->loadFromArray($_POST);
                 $newSubcategory->update();
-                $this->redirect($Url::link("admin/subcategory/index&id=$id"));
+                $this->redirect($Url::link("admin/subcategory/index"));
             }
             
             elseif (!empty($_POST['cancel'])) {
-                $this->redirect($Url::link("admin/subcategory/index&id=$id"));
+                $this->redirect($Url::link("admin/subcategory/index"));
             }
         }
         
@@ -105,7 +105,6 @@ class SubcategoryController extends \ItForFree\SimpleMVC\mvc\Controller
                 $newSubcategory->delete();
                 
                 $this->redirect($Url::link("admin/subcategory/index"));
-                //$this->redirect($Url::link("archive/allSubcategories"));
               
             }
             elseif (!empty($_POST['cancel'])) {

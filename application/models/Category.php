@@ -50,8 +50,7 @@ class Category extends BaseExampleModel
     
     public function update()
     {
-        $sql = "UPDATE $this->tableName SET title=:title, description=:description, id=:id"
-                . "WHERE id=:id";  
+        $sql = "UPDATE $this->tableName SET title=:title, description=:description, id=:id WHERE id = :id";  
         $st = $this->pdo->prepare ( $sql );
         $st->bindValue( ":title", $this->title, \PDO::PARAM_STR);
         $st->bindValue( ":description", $this->description, \PDO::PARAM_STR);

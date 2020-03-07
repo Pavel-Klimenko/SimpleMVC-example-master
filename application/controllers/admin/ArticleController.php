@@ -82,10 +82,10 @@ class ArticleController extends \ItForFree\SimpleMVC\mvc\Controller
                 $Article = new Article();
                 $newArticle = $Article->loadFromArray($_POST);
                 $newArticle->update();
-                $this->redirect($Url::link("admin/article/index&id=$id"));
+                $this->redirect($Url::link("admin/article/index"));
             } 
             elseif (!empty($_POST['cancel'])) {
-                $this->redirect($Url::link("admin/article/index&id=$id"));
+                $this->redirect($Url::link("admin/article/index"));
             }
         }
         
@@ -97,11 +97,19 @@ class ArticleController extends \ItForFree\SimpleMVC\mvc\Controller
             $Adminusers = new Adminusers();
             $authors = $Adminusers->getList()['results'];
             
-            $editArticleTitle = "Редактирование данных статьи";
+            $Category = new Category();
+            $categories= $Category->getList()['results'];
+                
+            $Subcategory = new Subcategory();
+            $subcategories= $Subcategory->getList()['results'];
             
+            $editArticle = "Редактирование данных статьи";
+            
+            $this->view->addVar('categories', $categories);
+            $this->view->addVar('subcategories', $subcategories);
             $this->view->addVar('authors', $authors);
             $this->view->addVar('viewArticle', $viewArticle);
-            $this->view->addVar('editArticleTitle', $editArticleTitle);
+            $this->view->addVar('editArticle', $editArticle);
             $this->view->render('article/edit.php'); 
         }   
     }

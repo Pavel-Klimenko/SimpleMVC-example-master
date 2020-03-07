@@ -58,11 +58,11 @@ class CategoryController extends \ItForFree\SimpleMVC\mvc\Controller
                 $category = new Category ();
                 $newCategory = $category->loadFromArray($_POST);
                 $newCategory->update();
-                $this->redirect($Url::link("admin/category/index&id=$id"));
+                $this->redirect($Url::link("admin/category/index"));
             }
             
             elseif (!empty($_POST['cancel'])) {
-                $this->redirect($Url::link("admin/category/index&id=$id"));
+                $this->redirect($Url::link("admin/category/index"));
             }
         }
          else {          

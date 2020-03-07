@@ -60,11 +60,10 @@ class Subcategory extends BaseExampleModel
     * Обновляем текущий объект подкатегории в базе данных
     */
     
+   
     public function update()
     {
-        $sql = "UPDATE $this->tableName SET title=:title,"
-                . " description=:description, id=:id, category_id=:category_id"
-                . "WHERE id = :id";  
+        $sql = "UPDATE $this->tableName SET title=:title, description=:description, category_id=:category_id, id=:id WHERE id = :id";  
         $st = $this->pdo->prepare ( $sql );
         $st->bindValue( ":title", $this->title, \PDO::PARAM_STR);
         $st->bindValue( ":description", $this->description, \PDO::PARAM_STR);

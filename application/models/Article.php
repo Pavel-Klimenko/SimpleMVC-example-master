@@ -96,21 +96,20 @@ class Article extends BaseExampleModel
     */
     public function update()
     {
-        $sql = "UPDATE $this->tableName SET timestamp=:timestamp, title=:title, category:=category, subcategory:=subcategory,"
-                . "summary=:summary, content=:content, activity=:activity, author_login=:author_login,"
-                . "id=:id  WHERE id = :id";  
+        
+        $sql = "UPDATE $this->tableName SET title=:title, category=:category, subcategory=:subcategory,"
+                . " summary=:summary, content=:content, activity=:activity, author_login=:author_login, id=:id WHERE id = :id"; 
+        
         $st = $this->pdo->prepare ( $sql );
-        $st->bindValue( ":timestamp", (new \DateTime('NOW'))->format('Y-m-d H:i:s'), \PDO::PARAM_STMT);
         $st->bindValue( ":title", $this->title, \PDO::PARAM_STR );
-        $st->bindValue( ":author_login", $this->author_login, \PDO::PARAM_STR);
-        $st->bindValue( ":summary", $this->summary, \PDO::PARAM_STR );
         $st->bindValue( ":category", $this->category, \PDO::PARAM_STR );
         $st->bindValue( ":subcategory", $this->subcategory, \PDO::PARAM_STR ); 
-        $st->bindValue( ":content", $this->content, \PDO::PARAM_STR );
+        $st->bindValue( ":summary", $this->summary, \PDO::PARAM_STR );
+        $st->bindValue( "content", $this->content, \PDO::PARAM_STR );
         $st->bindValue( ":activity", $this->activity, \PDO::PARAM_INT );
+        $st->bindValue( ":author_login", $this->author_login, \PDO::PARAM_STR);
         $st->bindValue( ":id", $this->id, \PDO::PARAM_INT );
-        $st->execute();
-          
+        $st->execute();  
     }
       
 }
